@@ -50,6 +50,9 @@ class ContactSpider(CrawlSpider):
             yield scrapy.Request(self.url, meta={'id': 1})
         else:
             yield scrapy.Request(self.start_urls[0], meta={'id': 1})
+            
+    def parse_start_url(self, response):
+        return self.parse_item(response)
 
     def parse_item(self, response):
         item = {}
